@@ -8,9 +8,13 @@ import { SearchBar } from '../../components/SearchBar';
 import { UsersTable } from '../../components/UsersTable';
 import { fetchUsersAsync, selectPaginatedUsers, selectUser } from './dashboardSlice';
 import { Logo } from '../../components/Logo';
+import { usePagination } from '../../hooks/usePagination';
+import { useFilter } from '../../hooks/useFilter';
 
 export const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+  const pagination = usePagination();
+  const filter = useFilter();
   const dispatch = useAppDispatch();
   const users = useAppSelector(selectPaginatedUsers);
   const lastUser = useAppSelector(selectUser);
@@ -36,10 +40,10 @@ export const Dashboard: React.FC = () => {
         <Card>
           <CardHeader className="flex">
             <h1 className="text-2xl">Users</h1>
-            <SearchBar />
+            <SearchBar {...filter} />
           </CardHeader>
           <UsersTable users={users} />
-          <Pagination />
+          <Pagination {...pagination} />
         </Card>
         <Card>
           <CardHeader>
