@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, setFilter } from '../features/dashboard/dashboardSlice';
+interface SearchBarProps {
+  filter: string;
+  setFilter: (filter: string) => void;
+}
 
-export const SearchBar: React.FC = () => {
-  const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
-
-  return <input value={filter} className="border-b-[0.1px] border-gray-300 focus:outline-none" onChange={(e) => dispatch(setFilter(e.target.value))} type="text" placeholder="Filter users by name" />;
+export const SearchBar: React.FC<SearchBarProps> = ({ filter, setFilter }) => {
+  return <input value={filter} className="border-b-[0.1px] border-gray-300 focus:outline-none" onChange={(e) => setFilter(e.target.value)} type="text" placeholder="Filter users by name" />;
 };

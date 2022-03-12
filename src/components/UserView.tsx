@@ -1,8 +1,8 @@
-import { useAppSelector } from '../../app/hooks';
-import { selectUser } from '../../features/dashboard/dashboardSlice';
-import { UserAccountInfo } from './UserAccountInfo';
-import { UserBar } from './UserBar';
-import { UserPersonalInfo } from './UserPersonalInfo';
+import { useAppSelector } from '../app/hooks';
+import { selectUser } from '../features/dashboard/dashboardSlice';
+import { UserAccountInfo } from './User/UserAccountInfo';
+import { UserBar } from './User/UserBar';
+import { UserPersonalInfo } from './User/UserPersonalInfo';
 
 export const UserView: React.FC = () => {
   const user = useAppSelector(selectUser);
